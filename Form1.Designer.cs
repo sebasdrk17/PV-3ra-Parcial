@@ -36,6 +36,7 @@
             this.agregarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.jugadoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.agregarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.jornadaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generarReporteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.txtNomEquipo = new System.Windows.Forms.TextBox();
@@ -59,7 +60,7 @@
             this.listaJugadores = new System.Windows.Forms.ListBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.grupoJornada = new System.Windows.Forms.GroupBox();
             this.label14 = new System.Windows.Forms.Label();
             this.txtGoles = new System.Windows.Forms.TextBox();
             this.txtEstado = new System.Windows.Forms.TextBox();
@@ -83,7 +84,7 @@
             this.grupoEquipo.SuspendLayout();
             this.grupoJugador.SuspendLayout();
             this.clickDerechoEquipo.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.grupoJornada.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numJornada)).BeginInit();
             this.clickDerechoEquiJornada.SuspendLayout();
             this.SuspendLayout();
@@ -94,10 +95,11 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.equiposToolStripMenuItem,
             this.jugadoresToolStripMenuItem,
+            this.jornadaToolStripMenuItem,
             this.generarReporteToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(890, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(910, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -144,6 +146,13 @@
             this.agregarToolStripMenuItem1.Size = new System.Drawing.Size(116, 22);
             this.agregarToolStripMenuItem1.Text = "Agregar";
             this.agregarToolStripMenuItem1.Click += new System.EventHandler(this.agregarToolStripMenuItem1_Click);
+            // 
+            // jornadaToolStripMenuItem
+            // 
+            this.jornadaToolStripMenuItem.Name = "jornadaToolStripMenuItem";
+            this.jornadaToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.jornadaToolStripMenuItem.Text = "Jornada";
+            this.jornadaToolStripMenuItem.Click += new System.EventHandler(this.jornadaToolStripMenuItem_Click);
             // 
             // generarReporteToolStripMenuItem
             // 
@@ -329,7 +338,7 @@
             // 
             // listaJugadores
             // 
-            this.listaJugadores.ContextMenuStrip = this.clickDerechoEquipo;
+            this.listaJugadores.ContextMenuStrip = this.clickDerechoJug;
             this.listaJugadores.FormattingEnabled = true;
             this.listaJugadores.Location = new System.Drawing.Point(684, 27);
             this.listaJugadores.Name = "listaJugadores";
@@ -354,25 +363,30 @@
             this.label7.TabIndex = 15;
             this.label7.Text = "Jugadores";
             // 
-            // groupBox1
+            // grupoJornada
             // 
-            this.groupBox1.Controls.Add(this.label14);
-            this.groupBox1.Controls.Add(this.txtGoles);
-            this.groupBox1.Controls.Add(this.txtEstado);
-            this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Controls.Add(this.btnGuardarJornada);
-            this.groupBox1.Controls.Add(this.txtEquipo2);
-            this.groupBox1.Controls.Add(this.txtEquipo1);
-            this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.numJornada);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Location = new System.Drawing.Point(12, 232);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(257, 189);
-            this.groupBox1.TabIndex = 16;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Jornada";
+            this.grupoJornada.Controls.Add(this.label14);
+            this.grupoJornada.Controls.Add(this.txtGoles);
+            this.grupoJornada.Controls.Add(this.txtEstado);
+            this.grupoJornada.Controls.Add(this.label12);
+            this.grupoJornada.Controls.Add(this.label13);
+            this.grupoJornada.Controls.Add(this.listaJornada);
+            this.grupoJornada.Controls.Add(this.label11);
+            this.grupoJornada.Controls.Add(this.btnGuardarJornada);
+            this.grupoJornada.Controls.Add(this.txtEquipo2);
+            this.grupoJornada.Controls.Add(this.listaEquiposJornada);
+            this.grupoJornada.Controls.Add(this.txtEquipo1);
+            this.grupoJornada.Controls.Add(this.label10);
+            this.grupoJornada.Controls.Add(this.label9);
+            this.grupoJornada.Controls.Add(this.numJornada);
+            this.grupoJornada.Controls.Add(this.label8);
+            this.grupoJornada.Location = new System.Drawing.Point(12, 232);
+            this.grupoJornada.Name = "grupoJornada";
+            this.grupoJornada.Size = new System.Drawing.Size(886, 189);
+            this.grupoJornada.TabIndex = 16;
+            this.grupoJornada.TabStop = false;
+            this.grupoJornada.Text = "Jornada";
+            this.grupoJornada.Visible = false;
             // 
             // label14
             // 
@@ -469,7 +483,7 @@
             // 
             this.listaEquiposJornada.ContextMenuStrip = this.clickDerechoEquiJornada;
             this.listaEquiposJornada.FormattingEnabled = true;
-            this.listaEquiposJornada.Location = new System.Drawing.Point(284, 272);
+            this.listaEquiposJornada.Location = new System.Drawing.Point(272, 59);
             this.listaEquiposJornada.Name = "listaEquiposJornada";
             this.listaEquiposJornada.Size = new System.Drawing.Size(154, 108);
             this.listaEquiposJornada.TabIndex = 22;
@@ -499,7 +513,7 @@
             // listaJornada
             // 
             this.listaJornada.FormattingEnabled = true;
-            this.listaJornada.Location = new System.Drawing.Point(461, 272);
+            this.listaJornada.Location = new System.Drawing.Point(449, 59);
             this.listaJornada.Name = "listaJornada";
             this.listaJornada.Size = new System.Drawing.Size(413, 108);
             this.listaJornada.TabIndex = 23;
@@ -507,7 +521,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(288, 247);
+            this.label11.Location = new System.Drawing.Point(289, 29);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(118, 13);
             this.label11.TabIndex = 24;
@@ -516,7 +530,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(511, 247);
+            this.label12.Location = new System.Drawing.Point(629, 29);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(50, 13);
             this.label12.TabIndex = 25;
@@ -526,12 +540,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(890, 433);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.listaJornada);
-            this.Controls.Add(this.listaEquiposJornada);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(910, 433);
+            this.Controls.Add(this.grupoJornada);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.listaJugadores);
@@ -550,8 +560,8 @@
             this.grupoJugador.ResumeLayout(false);
             this.grupoJugador.PerformLayout();
             this.clickDerechoEquipo.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.grupoJornada.ResumeLayout(false);
+            this.grupoJornada.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numJornada)).EndInit();
             this.clickDerechoEquiJornada.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -591,7 +601,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ContextMenuStrip clickDerechoJug;
         private System.Windows.Forms.ToolStripMenuItem eliminarToolStripMenuItem2;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox grupoJornada;
         private System.Windows.Forms.Button btnGuardarJornada;
         private System.Windows.Forms.TextBox txtEquipo2;
         private System.Windows.Forms.TextBox txtEquipo1;
@@ -610,6 +620,7 @@
         private System.Windows.Forms.ContextMenuStrip clickDerechoEquiJornada;
         private System.Windows.Forms.ToolStripMenuItem equipo1ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem equipo2ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem jornadaToolStripMenuItem;
     }
 }
 

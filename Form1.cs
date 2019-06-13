@@ -67,8 +67,18 @@ namespace examen3aParcial
 
         private void pasarA1ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int indice = 0;
-            indice = listaJugadores.SelectedIndex;
+            int indice = 0,encontrado=0;
+            indice = listaEquipos.SelectedIndex;
+            string equipo = "";
+            equipo = listaEquipos.SelectedItem.ToString();
+            /*for(int i = 0; i < listaJugadores.Items.Count; i++)
+            {
+                encontrado=listaJugadores.FindString("Equipo:" + equipo, i);
+                if (encontrado > 0)
+                {
+                    listaJugadores.Items.RemoveAt(indice);
+                }
+            }*/
             listaEquipos.Items.RemoveAt(indice);
         }
 
@@ -116,6 +126,7 @@ namespace examen3aParcial
                 escritor.Dispose();
                 escritor.Close();
             }
+
         }
 
         private void equipo1ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -141,6 +152,12 @@ namespace examen3aParcial
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+
+        private void jornadaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            grupoJornada.Show();
         }
     }
 }
